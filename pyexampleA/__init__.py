@@ -5,4 +5,4 @@
 
 from .decorators import singleton
 from .functions import listChunker, report, weirdCase
-from .module1 import create_logger
+from .logger import create_logger

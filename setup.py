@@ -5,7 +5,7 @@ with open("README.md", "r", encoding="utf-8") as fh:
 
 setuptools.setup(
     name='pyexampleA',
-    version='0.0.3',
+    version='0.0.4',
     author='Som Shekar',
     author_email='shek2994@gmail.com',
     description='Testing installation of Package',

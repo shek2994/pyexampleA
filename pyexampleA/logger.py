@@ -22,3 +22,16 @@ def create_logger(name, logFileName="basecontrol_server.log"):
   logger.addHandler(ch) # add the handlers to logger
 
   return logger
+
+
+class TempParsing(object):
+  """docstring for TempParsing"""
+  def __init__(self, arg):
+    super(TempParsing, self).__init__()
+    self.arg = arg
+
+    self.lg = create_logger("junk", logFileName="junk.log")
+    self.lg.debug("dfgdfg")
+  def testPrint(self):
+    self.lg.info(f"testing")
+  

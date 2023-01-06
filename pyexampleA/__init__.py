@@ -1,9 +1,7 @@
-"""
-pyexampleA.
-An example python library.
-"""
-from .module1 import *
 
-# __version__ = "0.1.0"
-# __author__ = 'Som shekar'
-# __credits__ = 'None'
+
+# This is so that you can import ppack or import average from ppack
+# in stead of from ppack.functions import average
+
+from .decorators import singleton
+from .functions import listChunker, report, weirdCase

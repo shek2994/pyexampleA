@@ -45,5 +45,5 @@ setuptools.setup(
     },
     license='MIT',
     packages=['pyexampleA'],
-    install_requires=['logging'],
+    install_requires=['requests'],
 )

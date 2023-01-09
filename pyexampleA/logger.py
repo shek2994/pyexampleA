@@ -1,17 +1,20 @@
 import logging
 
-def create_logger(name, logFileName="basecontrol_server.log"):
-  print("good")
+def create_logger(name, logFileName="basecontrol_server.log", fileSplitSize = None):
+  MEGA = 1024*1024 if fileSplitSize == None else fileSplitSize
 
-
-  # '''Create a logger instance'''
+  '''Create a logger instance'''
   logger=logging.getLogger(name)
   logger.setLevel(logging.DEBUG)
-  logger_filehandler = logging.FileHandler(logFileName) # create file handler that logs debug and higher level messages
+  if True:
+    logger_filehandler = logging.handlers.RotatingFileHandler(
+            logFileName, maxBytes=10*MEGA, backupCount=5)
+  else:
+    logger_filehandler = logging.FileHandler(logFileName) # create file handler that logs debug and higher level messages
   logger_filehandler.setLevel(logging.INFO)
 
   # create formatter and add it to the handlers
-  formatter = logging.Formatter('[TS=%(asctime)s][LN=%(name)20s][FN=%(filename)20s][MN=%(funcName)20s()][LL=%(levelname)7s][%(threadName)10s]- MSG=%(message)s')
+  formatter = logging.Formatter('[TS=%(asctime)s][LN=%(name)20s][FN=%(filename)20s][MN=%(funcName)20s()][LL=%(levelname)7s][TN=%(threadName)10s]- MSG=%(message)s')
   logger_filehandler.setFormatter(formatter)
   logger.addHandler(logger_filehandler)
 

@@ -2,7 +2,8 @@ import logging
 
 import logging.handlers
 from multiprocessing import RLock, Process
-import os, time, gzip
+import os, gzip
+from datetime import datetime
 from functools import partial, partialmethod
 
 
@@ -79,7 +80,7 @@ class MultiprocessRotatingFileHandler(logging.handlers.RotatingFileHandler):
                   if os.path.exists(dfn):
                       os.remove(dfn)
                   os.rename(sfn, dfn)
-          dfn = self.rotation_filename(self.baseFilename +'_'+str(time.time()) + ".1")
+          dfn = self.rotation_filename(self.baseFilename +'_'+(datetime.now().strftime("%d-%m-%y_%H:%M:%S")) + ".1")
           if os.path.exists(dfn):
               os.remove(dfn)
           self.rotate(self.baseFilename, dfn)
@@ -92,7 +93,7 @@ def create_logger(name, logFileName="basecontrol_server.log", fileSplitSize = No
   Use custom file rotate
   """
   print(kwargs)
-  MEGA_BYTE = 1*1024*1024 if fileSplitSize == None else fileSplitSize
+  MEGA_BYTE = 10*1024*1024 if fileSplitSize == None else fileSplitSize
   ENABLE_CUSTOM_ROTATION = True
   ENABLE_COMPRESSION = True
 
